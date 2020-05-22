@@ -16,12 +16,12 @@ struct planet
     std::vector<float> orbit_time;
     std::vector<double> gravity;
     std::vector<int> moons;
-    std::vector<std::vector<int>> rgb;
+    std::vector<std::vector<float>> rgb;
 };
 class CelestialBody
 {
 public:
-    CelestialBody(int diameter, int distance, double spin_time, float orbit_time_, std::vector<int> rgb);
+    CelestialBody(int diameter, int distance, double spin_time, float orbit_time_, std::vector<float> rgb);
     CelestialBody(planet obj);
     void show();
     void draw_body();
@@ -32,6 +32,6 @@ private:
     int distance_;
     double spin_time_;
     float orbit_time_;
-    std::vector<int> rgb_;
+    std::vector<float> rgb_;
 };
 #endif // CELESTIALBODY_H

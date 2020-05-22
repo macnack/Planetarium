@@ -89,7 +89,7 @@ bool read_file(std::string name){
             std::string orb_;
             std::string gra_;
             std::string moo_;
-            std::vector<int> rgb;
+            std::vector<float> rgb;
             std::string r_;
             std::string g_;
             std::string b_;
@@ -102,9 +102,9 @@ bool read_file(std::string name){
             pl.orbit_time.push_back(stof(orb_));
             pl.gravity.push_back(stod(gra_));
             pl.moons.push_back(stoi(moo_));
-            rgb.push_back(stoi(r_));
-            rgb.push_back(stoi(g_));
-            rgb.push_back(stoi(b_));
+            rgb.push_back(stof(r_));
+            rgb.push_back(stof(g_));
+            rgb.push_back(stof(b_));
             pl.rgb.push_back(rgb);
         }
     }else{
