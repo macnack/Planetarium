@@ -19,7 +19,7 @@ void CelestialBody::draw_body()
 {
     double radius = diameter_ / 2.0;
     //bottom
-    glColor3d(1.0, 0.0, 0.0);
+    glColor3d(0.5, 0.5, 0.5);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
     glVertex3d(-radius,  radius, -radius);
@@ -29,7 +29,7 @@ void CelestialBody::draw_body()
     glEnd();
 
     //top
-    glColor3d(1.0, 0.0, 0.0);
+    glColor3d(0.5, 0.5, 0.5);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON); // bottom
     glVertex3d(-radius,  radius, radius);
@@ -39,7 +39,7 @@ void CelestialBody::draw_body()
     glEnd();
 
     //left
-    glColor3d(1.0, 0.0, 0.0);
+    glColor3d(0.5, 0.5, 0.5);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
     glVertex3d(-radius, -radius,  radius);
@@ -49,7 +49,7 @@ void CelestialBody::draw_body()
     glEnd();
 
     //right
-    glColor3d(1.0, 0.0, 0.0);
+    glColor3d(0.5, 0.5, 0.5);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
     glVertex3d(radius, -radius,  radius);
@@ -59,7 +59,7 @@ void CelestialBody::draw_body()
     glEnd();
 
     //front
-    glColor3d(1.0, 0.0, 0.0);
+    glColor3d(0.5, 0.5, 0.5);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
     glVertex3d(-radius, -radius,  radius);
@@ -69,7 +69,7 @@ void CelestialBody::draw_body()
     glEnd();
     
     //back
-    glColor3d(1.0, 0.0, 0.0);
+    glColor3d(0.5, 0.5, 0.5);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
     glVertex3d(-radius, radius,  radius);
@@ -88,14 +88,11 @@ void CelestialBody::draw(float dir)
     {
         angle = 0.f;
     }
-    glPushMatrix();
+    glPushMatrix();                       // zapisuje pkt 0
     glTranslated(distance, 0.0, 0.0);     // location from Sun
     glRotated(rot, 0.0, 0.0, 1.0);        // spinn
     glScaled(0.01, 0.01, 0.01);           // sklala 1/100
     this->draw_body();
-    glPopMatrix();
-    glPushMatrix();
-    glRotatef(rot, 0.0, 0.0, 1.0);      // orbit
-    //glTranslated(distance, 0.0, 0.0); // okrag o promieniu dystans od slonca
-    //glPopMatrix();
+    glPopMatrix();                        // pobieram pkt 0
+    glRotatef(rot, 0.0, 0.0, 1.0);        // circle move
 }
