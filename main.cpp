@@ -142,12 +142,14 @@ void set_viewport(int width, int height) {
 //    glLoadIdentity();
 //}
 int main() {
-    // create the window
+    //read file
     if(!read_file("/home/maciek/work/Planetarium/solar/solar_system.txt")){return 1;};
     std::vector<CelestialBody> CelestialBodies;
+    //put data to object
     for(unsigned int i = 0; i < pl.name.size(); i++){
         CelestialBodies.emplace_back(CelestialBody(pl.diameter[i], pl.distance[i], pl.spin_time[i], pl.orbit_time[i], pl.rgb[i]));
     }
+    // create the window
     sf::Window window(sf::VideoMode(1024, 768), "SFML OpenGL Template", sf::Style::Default, sf::ContextSettings(32));
     window.setVerticalSyncEnabled(true);
 
@@ -215,10 +217,10 @@ int main() {
         //float rot = clk.getElapsedTime().asSeconds() * 90;
         float dir = clk.getElapsedTime().asSeconds();
         // draw stuff
+
         for( auto &CelestialBodie : CelestialBodies){
             CelestialBodie.draw(dir);
         }
-
 
         //camera move
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
