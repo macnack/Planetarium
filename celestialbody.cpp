@@ -89,10 +89,10 @@ void CelestialBody::draw(float dir)
         angle = 0.f;
     }
     glPushMatrix();                       // zapisuje pkt 0
-    glTranslated(distance, 0.0, 0.0);     // location from Sun
+    glTranslated(distance, 0.0, 0.0);     // distance    from Sun
     glRotated(rot, 0.0, 0.0, 1.0);        // spinn
     glScaled(0.01, 0.01, 0.01);           // sklala 1/100
-    this->draw_body();
+    this->draw_body();                    // rysuj...
     glPopMatrix();                        // pobieram pkt 0
     glRotatef(rot, 0.0, 0.0, 1.0);        // circle move
 }
