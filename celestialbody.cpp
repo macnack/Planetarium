@@ -22,9 +22,9 @@ void CelestialBody::draw_body()
     glColor3d(1.0, 0.0, 0.0);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
-    glVertex3d(-radius, radius, -radius);
-    glVertex3d(radius, radius, -radius);
-    glVertex3d(radius, -radius, -radius);
+    glVertex3d(-radius,  radius, -radius);
+    glVertex3d( radius,  radius, -radius);
+    glVertex3d( radius, -radius, -radius);
     glVertex3d(-radius, -radius, -radius);
     glEnd();
 
@@ -32,9 +32,9 @@ void CelestialBody::draw_body()
     glColor3d(1.0, 0.0, 0.0);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON); // bottom
-    glVertex3d(-radius, radius, radius);
-    glVertex3d(radius, radius, radius);
-    glVertex3d(radius, -radius, radius);
+    glVertex3d(-radius,  radius, radius);
+    glVertex3d( radius,  radius, radius);
+    glVertex3d( radius, -radius, radius);
     glVertex3d(-radius, -radius, radius);
     glEnd();
 
@@ -42,9 +42,9 @@ void CelestialBody::draw_body()
     glColor3d(1.0, 0.0, 0.0);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
-    glVertex3d(-radius, -radius, radius);
-    glVertex3d(-radius, radius, radius);
-    glVertex3d(-radius, radius, -radius);
+    glVertex3d(-radius, -radius,  radius);
+    glVertex3d(-radius,  radius,  radius);
+    glVertex3d(-radius,  radius, -radius);
     glVertex3d(-radius, -radius, -radius);
     glEnd();
 
@@ -52,9 +52,9 @@ void CelestialBody::draw_body()
     glColor3d(1.0, 0.0, 0.0);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
-    glVertex3d(radius, -radius, radius);
-    glVertex3d(radius, radius, radius);
-    glVertex3d(radius, radius, -radius);
+    glVertex3d(radius, -radius,  radius);
+    glVertex3d(radius,  radius,  radius);
+    glVertex3d(radius,  radius, -radius);
     glVertex3d(radius, -radius, -radius);
     glEnd();
 
@@ -62,9 +62,9 @@ void CelestialBody::draw_body()
     glColor3d(1.0, 0.0, 0.0);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
-    glVertex3d(-radius, -radius, radius);
-    glVertex3d(radius, -radius, radius);
-    glVertex3d(radius, -radius, -radius);
+    glVertex3d(-radius, -radius,  radius);
+    glVertex3d( radius, -radius,  radius);
+    glVertex3d( radius, -radius, -radius);
     glVertex3d(-radius, -radius, -radius);
     glEnd();
     
@@ -72,9 +72,9 @@ void CelestialBody::draw_body()
     glColor3d(1.0, 0.0, 0.0);
     //glColor3i(rgb_[0],rgb_[1], rgb_[2]);
     glBegin(GL_POLYGON);
-    glVertex3d(-radius, radius, radius);
-    glVertex3d(radius, radius, radius);
-    glVertex3d(radius, radius, -radius);
+    glVertex3d(-radius, radius,  radius);
+    glVertex3d( radius, radius,  radius);
+    glVertex3d( radius, radius, -radius);
     glVertex3d(-radius, radius, -radius);
     glEnd();
 }
@@ -83,17 +83,19 @@ void CelestialBody::draw(float dir)
 {
     double distance = distance_ / 100.0;
     double rot = dir * 360.0 * 1 / (spin_time_ * 8.6400);
-    float angle = dir * 360.0f * 1 / (orbit_time_ * 8.6400);
+    float angle = dir * 360.0f * 1 / (orbit_time_ * 86400.0f);
     if (orbit_time_ == 0)
     {
         angle = 0.f;
     }
     glPushMatrix();
     glTranslated(distance, 0.0, 0.0);     // location from Sun
-    glRotatef(rot, 0.0, 0.0, 1.0);        // spinn
-    glRotatef(angle, 0.0, 1.0, 0.0);      // orbit
-    glTranslated(distance * 2, 0.0, 0.0); // okrag o promieniu dystans od slonca
-    glScaled(0.01, 0.01, 0.01);
+    glRotated(rot, 0.0, 0.0, 1.0);        // spinn
+    glScaled(0.01, 0.01, 0.01);           // sklala 1/100
     this->draw_body();
     glPopMatrix();
+    glPushMatrix();
+    glRotatef(rot, 0.0, 0.0, 1.0);      // orbit
+    //glTranslated(distance, 0.0, 0.0); // okrag o promieniu dystans od slonca
+    //glPopMatrix();
 }

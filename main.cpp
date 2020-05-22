@@ -204,7 +204,7 @@ int main() {
                 // adjust the viewport when the window is resized
                 set_viewport(event.size.width, event.size.height);
             } else if (event.type == sf::Event::KeyPressed){
-                set_viewport(event.size.width, event.size.height);
+                set_viewport(view_pos_x,  view_pos_y );
                 //std::cerr << "x: " <<view_pos_x << "y:" << view_pos_y << "\n";
             }
         }
